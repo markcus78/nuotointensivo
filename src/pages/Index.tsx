@@ -135,10 +135,7 @@ export default function Index() {
       <header className="sticky top-0 z-40 backdrop-blur bg-bg/90 border-b border-border">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between gap-4">
           <a href="#" className="flex items-center gap-2.5">
-            <div className="h-8 px-3 bg-primary rounded flex items-center">
-              <span className="font-display text-xl text-white tracking-wider">WT</span>
-            </div>
-            <span className="hidden sm:block font-semibold text-sm text-fg/70">Wellness Town</span>
+            <img src="/logo-wt.png" alt="Wellness Town" className="h-9 w-auto" />
           </a>
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((l) => (
@@ -221,13 +218,13 @@ export default function Index() {
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-charcoal-fg/40 mb-1">Intensivo · 4 sett.</p>
                     <p className="font-display text-4xl leading-none">
-                      €129 <span className="text-charcoal-fg/30 line-through text-2xl">→ €139</span>
+                      €129 <span className="text-charcoal-fg/30 line-through text-2xl">€139</span>
                     </p>
                   </div>
                   <div>
                     <p className="font-mono text-[10px] uppercase tracking-widest text-charcoal-fg/40 mb-1">Super · 4 sett.</p>
                     <p className="font-display text-4xl leading-none">
-                      €149 <span className="text-charcoal-fg/30 line-through text-2xl">→ €159</span>
+                      €149 <span className="text-charcoal-fg/30 line-through text-2xl">€159</span>
                     </p>
                   </div>
                 </div>
@@ -236,28 +233,28 @@ export default function Index() {
 
             {/* Right: photo grid */}
             <aside className="col-span-12 lg:col-span-5 flex flex-col gap-4 pt-6 lg:pt-0 pb-0 lg:pb-16 self-stretch">
-              <div className="relative flex-1 min-h-[360px] rounded-2xl overflow-hidden border border-border bg-gradient-to-br from-primary/20 via-sky-100 to-primary/5">
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-primary/20">
-                  <span className="text-8xl">🏊</span>
-                  <span className="font-mono text-xs uppercase tracking-widest mt-3 text-primary/30">foto vasca Wellness Town</span>
-                </div>
+              <div className="relative flex-1 min-h-[360px] rounded-2xl overflow-hidden border border-border stripes bg-gradient-to-br from-primary/15 via-primary/8 to-sky-100">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent" />
                 <div className="absolute top-4 left-4 bg-charcoal text-charcoal-fg font-mono uppercase tracking-widest text-[10px] px-2 py-1 rounded">
                   EST · 2026
                 </div>
                 <div className="absolute bottom-4 right-4 bg-card text-fg font-mono uppercase tracking-widest text-[10px] px-2 py-1 rounded shadow">
                   Wellness Town
                 </div>
+                <div className="absolute bottom-4 left-4">
+                  <img src="/logo-wt.png" alt="Wellness Town" className="h-6 w-auto opacity-20" />
+                </div>
               </div>
               <div className="grid grid-cols-3 gap-2">
                 {[
-                  { emoji: "🐟", label: "bambini" },
-                  { emoji: "💪", label: "adulti" },
-                  { emoji: "🥇", label: "istruttori" },
+                  { label: "Bambini", sub: "–12 anni" },
+                  { label: "Ragazzi", sub: "13–17 anni" },
+                  { label: "Adulti",  sub: "18+ anni" },
                 ].map((p) => (
                   <div key={p.label}
-                    className="aspect-square rounded-xl overflow-hidden border border-border bg-gradient-to-br from-primary/10 to-sky-50 flex flex-col items-center justify-center gap-1.5">
-                    <span className="text-2xl">{p.emoji}</span>
-                    <span className="font-mono text-[9px] uppercase tracking-widest text-muted">{p.label}</span>
+                    className="aspect-square rounded-xl overflow-hidden border border-border stripes bg-gradient-to-br from-primary/10 to-sky-50 flex flex-col items-end justify-end p-3">
+                    <span className="font-display text-lg text-charcoal leading-none">{p.label}</span>
+                    <span className="font-mono text-[9px] uppercase tracking-widest text-muted">{p.sub}</span>
                   </div>
                 ))}
               </div>
@@ -357,16 +354,16 @@ export default function Index() {
                   <div className="flex justify-between items-end mb-3">
                     <div>
                       <p className="sec-label mb-1">1 settimana</p>
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-display text-4xl text-primary">€40</span>
-                        <span className="font-mono text-xs text-green-600 line-through">€35 promo</span>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display text-4xl text-primary">€35</span>
+                        <span className="font-mono text-xs text-muted line-through">€40</span>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className="sec-label mb-1">4 settimane</p>
-                      <div className="flex items-baseline gap-2 justify-end">
-                        <span className="font-display text-4xl text-primary">€139</span>
-                        <span className="font-mono text-xs text-green-600 line-through">€129 promo</span>
+                      <div className="flex items-baseline gap-1.5 justify-end">
+                        <span className="font-display text-4xl text-primary">€129</span>
+                        <span className="font-mono text-xs text-muted line-through">€139</span>
                       </div>
                     </div>
                   </div>
@@ -400,16 +397,16 @@ export default function Index() {
                   <div className="flex justify-between items-end mb-3">
                     <div>
                       <p className="sec-label mb-1 text-primary/50">1 settimana</p>
-                      <div className="flex items-baseline gap-2">
-                        <span className="font-display text-4xl text-primary">€60</span>
-                        <span className="font-mono text-xs text-green-600 line-through">€55 promo</span>
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display text-4xl text-primary">€55</span>
+                        <span className="font-mono text-xs text-primary/50 line-through">€60</span>
                       </div>
                     </div>
                     <div className="text-right">
                       <p className="sec-label mb-1 text-primary/50">4 settimane</p>
-                      <div className="flex items-baseline gap-2 justify-end">
-                        <span className="font-display text-4xl text-primary">€159</span>
-                        <span className="font-mono text-xs text-green-600 line-through">€149 promo</span>
+                      <div className="flex items-baseline gap-1.5 justify-end">
+                        <span className="font-display text-4xl text-primary">€149</span>
+                        <span className="font-mono text-xs text-primary/50 line-through">€159</span>
                       </div>
                     </div>
                   </div>
