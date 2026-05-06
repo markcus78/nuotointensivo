@@ -2,32 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── TAILWIND v4: i colori DEVONO stare in @theme per generare le utility classes ── */
+@theme {
+  --color-bg:           hsl(42 30% 97%);
+  --color-fg:           hsl(210 20% 10%);
+  --color-card:         hsl(0 0% 100%);
+  --color-border:       hsl(210 20% 88%);
+  --color-muted:        hsl(210 15% 55%);
+
+  --color-primary:      hsl(199 89% 42%);
+  --color-primary-fg:   hsl(0 0% 100%);
+  --color-primary-soft: hsl(199 60% 92%);
+
+  --color-charcoal:     hsl(210 20% 10%);
+  --color-charcoal-fg:  hsl(42 30% 97%);
+
+  --color-amber-wt:     hsl(38 95% 52%);
+  --color-amber-soft:   hsl(38 95% 94%);
+
+  --color-teal-wt:      hsl(178 52% 43%);
+
+  --font-display: "Bebas Neue", system-ui, sans-serif;
+}
+
 @layer base {
-  :root {
-    --bg:       42 30% 97%;
-    --fg:       210 20% 10%;
-    --card:     0 0% 100%;
-    --border:   210 20% 88%;
-    --muted:    210 15% 55%;
-
-    --primary:      199 89% 42%;   /* deep pool blue */
-    --primary-fg:   0 0% 100%;
-    --primary-soft: 199 60% 92%;
-
-    --charcoal:    210 20% 10%;
-    --charcoal-fg: 42 30% 97%;
-
-    --amber:    38 95% 52%;
-    --amber-soft: 38 95% 94%;
-
-    --teal:     178 52% 43%;
-  }
-
   html { scroll-behavior: smooth; }
 
   body {
-    background: hsl(var(--bg));
-    color: hsl(var(--fg));
+    background-color: var(--color-bg);
+    color: var(--color-fg);
     font-family: "Inter", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
@@ -46,15 +49,15 @@
   to   { transform: translateX(-50%); }
 }
 
-.live-dot  { animation: dotpulse 1.6s ease-in-out infinite; }
+.live-dot     { animation: dotpulse 1.6s ease-in-out infinite; }
 .ticker-track { animation: ticker 36s linear infinite; }
 
 /* ── UTILITIES ── */
 .paper-grain {
   background-image:
     radial-gradient(hsl(0 0% 0% / 0.025) 1px, transparent 1px),
-    radial-gradient(hsl(0 0% 0% / 0.02) 1px, transparent 1px);
-  background-size: 18px 18px, 32px 32px;
+    radial-gradient(hsl(0 0% 0% / 0.02)  1px, transparent 1px);
+  background-size:     18px 18px, 32px 32px;
   background-position: 0 0, 9px 16px;
 }
 
@@ -79,9 +82,5 @@
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: hsl(var(--muted));
-}
-
-.wave-divider {
-  background: linear-gradient(180deg, hsl(var(--primary) / 0.08) 0%, transparent 100%);
+  color: var(--color-muted);
 }
