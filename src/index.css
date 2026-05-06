@@ -2,65 +2,209 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── TAILWIND v4: i colori DEVONO stare in @theme per generare le utility classes ── */
-@theme {
-  --color-bg:           hsl(42 30% 97%);
-  --color-fg:           hsl(210 20% 10%);
-  --color-card:         hsl(0 0% 100%);
-  --color-border:       hsl(210 20% 88%);
-  --color-muted:        hsl(210 15% 55%);
-
-  --color-primary:      hsl(199 89% 42%);
-  --color-primary-fg:   hsl(0 0% 100%);
-  --color-primary-soft: hsl(199 60% 92%);
-
-  --color-charcoal:     hsl(210 20% 10%);
-  --color-charcoal-fg:  hsl(42 30% 97%);
-
-  --color-amber-wt:     hsl(38 95% 52%);
-  --color-amber-soft:   hsl(38 95% 94%);
-
-  --color-teal-wt:      hsl(178 52% 43%);
-
-  --font-display: "Bebas Neue", system-ui, sans-serif;
-}
+/* Design system — "Aiutalo a Smettere"
+   Colori allineati al logo Wellness Town (teal #3aafa9).
+   All colors MUST be HSL.
+*/
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  :root {
+    --background: 42 33% 97%;
+    --foreground: 0 0% 11%;
 
-  body {
-    background-color: var(--color-bg);
-    color: var(--color-fg);
-    font-family: "Inter", system-ui, sans-serif;
-    -webkit-font-smoothing: antialiased;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    --primary: 199 89% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 199 60% 94%;
+    --secondary-foreground: 0 0% 11%;
+
+    --muted: 199 30% 91%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 199 89% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 85%;
+    --ring: 199 89% 42%;
+
+    --radius: 0.5rem;
+
+    /* Named surfaces */
+    --charcoal: 0 0% 11%;
+    --charcoal-foreground: 42 33% 97%;
+    --cream: 42 33% 97%;
+    --check: 199 89% 35%;
+    --cross: 0 75% 55%;
+    --warn: 14 92% 52%;
+    --warn-soft: 14 92% 95%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 199 89% 42%;
   }
 
-  .font-display { font-family: "Bebas Neue", system-ui, sans-serif; }
-  .font-mono-wt { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .dark {
+    --background: 0 0% 11%;
+    --foreground: 42 33% 97%;
+    --card: 0 0% 14%;
+    --card-foreground: 42 33% 97%;
+    --popover: 0 0% 14%;
+    --popover-foreground: 42 33% 97%;
+    --primary: 199 89% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 42 33% 97%;
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 199 89% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 75% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 22%;
+    --input: 0 0% 22%;
+    --ring: 199 89% 50%;
+    color-scheme: dark;
+  }
+
+  html {
+    color-scheme: light dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
 }
 
-/* ── ANIMATIONS ── */
+/* ============ KEYFRAMES ============ */
+
 @keyframes dotpulse {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.4; transform: scale(0.85); }
+  50%       { opacity: 0.45; transform: scale(0.9); }
 }
+
 @keyframes ticker {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
 
-.live-dot     { animation: dotpulse 1.6s ease-in-out infinite; }
-.ticker-track { animation: ticker 36s linear infinite; }
-
-/* ── UTILITIES ── */
-.paper-grain {
-  background-image:
-    radial-gradient(hsl(0 0% 0% / 0.025) 1px, transparent 1px),
-    radial-gradient(hsl(0 0% 0% / 0.02)  1px, transparent 1px);
-  background-size:     18px 18px, 32px 32px;
-  background-position: 0 0, 9px 16px;
+@keyframes reveal-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ============ UTILITY CLASSES ============ */
+
+.live-dot {
+  animation: dotpulse 1.6s ease-in-out infinite;
+}
+
+.ticker-track {
+  animation: ticker 40s linear infinite;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Section number label */
+.sec-num {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: hsl(var(--muted-foreground));
+  text-transform: uppercase;
+}
+
+/* Marker highlight on text */
+.marker {
+  background-image: linear-gradient(180deg, transparent 60%, hsl(var(--primary) / 0.35) 60%);
+  padding: 0 0.05em;
+}
+
+/* Strikethrough with red diagonal */
+.strike-out {
+  position: relative;
+  display: inline-block;
+}
+.strike-out::after {
+  content: "";
+  position: absolute;
+  left: -2%; right: -2%; top: 52%;
+  height: 0.18em;
+  background: hsl(var(--cross));
+  transform: rotate(-3deg);
+}
+
+/* Phase timeline bullet */
+.phase-bullet {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.18);
+}
+.phase-bullet-warn {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: hsl(var(--warn));
+  box-shadow: 0 0 0 4px hsl(var(--warn) / 0.18);
+}
+
+/* FAQ plus icon */
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+
+.faq-plus {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  flex-shrink: 0;
+}
+.faq-plus::before,
+.faq-plus::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  background: hsl(var(--primary));
+}
+.faq-plus::before {
+  width: 14px;
+  height: 2px;
+  transition: transform 0.25s ease;
+}
+.faq-plus::after {
+  width: 2px;
+  height: 14px;
+}
+details[open] .faq-plus::before {
+  transform: rotate(90deg);
+}
+
+/* Diagonal stripes for placeholders */
 .stripes {
   background-image: repeating-linear-gradient(
     135deg,
@@ -68,7 +212,6 @@
     hsl(0 0% 0% / 0.02) 12px 24px
   );
 }
-
 .stripes-dark {
   background-image: repeating-linear-gradient(
     135deg,
@@ -77,10 +220,16 @@
   );
 }
 
-.sec-label {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-muted);
+/* Paper grain texture */
+.paper-grain {
+  background-image:
+    radial-gradient(hsl(0 0% 0% / 0.025) 1px, transparent 1px),
+    radial-gradient(hsl(0 0% 0% / 0.02) 1px, transparent 1px);
+  background-size: 18px 18px, 32px 32px;
+  background-position: 0 0, 9px 16px;
+}
+
+/* Text selection */
+::selection {
+  background: hsl(var(--primary) / 0.3);
 }
