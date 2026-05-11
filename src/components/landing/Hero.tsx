@@ -124,44 +124,22 @@ const Hero = ({ hideCTA = false }: HeroProps) => (
 
         {/* Right: visual block — placeholder professionale, sostituire con foto vasca quando disponibili */}
         <aside className="col-span-12 lg:col-span-5 flex flex-col gap-4">
-          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border bg-gradient-to-br from-primary/30 via-primary/15 to-secondary">
-            <div className="absolute inset-0 stripes" />
-            <div className="absolute inset-0 flex items-end p-6">
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/50 mb-2">
-                  Foto vasca
-                </p>
-                <p className="font-display text-3xl text-foreground/70 leading-tight">
-                  WELLNESS<br/>TOWN<br/>POOL
-                </p>
-              </div>
-            </div>
+          <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-border">
+            <img
+              src="/vasca-principale.jpg"
+              alt="Piscina Wellness Town"
+              className="w-full h-full object-cover"
+            />
             <div className="absolute top-4 left-4 bg-charcoal text-charcoal-foreground font-mono uppercase tracking-widest text-[10px] px-2 py-1 rounded">
               EST &middot; 2026
             </div>
-            <div className="absolute bottom-4 right-4 bg-background text-foreground font-mono uppercase tracking-widest text-[10px] px-2 py-1 rounded shadow">
-              Wellness Town
-            </div>
           </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[
-              { label: "Bambini", sub: "fino 12" },
-              { label: "Ragazzi", sub: "13—17" },
-              { label: "Adulti",  sub: "18+" },
-            ].map((p) => (
-              <div
-                key={p.label}
-                className="relative aspect-square rounded-lg overflow-hidden border border-border bg-gradient-to-br from-primary/15 to-secondary p-3 flex flex-col justify-end"
-              >
-                <div className="absolute inset-0 stripes" />
-                <div className="relative">
-                  <p className="font-display text-xl leading-none text-foreground">{p.label}</p>
-                  <p className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground mt-1">
-                    {p.sub}
-                  </p>
-                </div>
-              </div>
-            ))}
+          <div className="relative aspect-[3/2] rounded-2xl overflow-hidden border border-border">
+            <img
+              src="/vasca-allenamento.jpg"
+              alt="Allenamento in vasca Wellness Town"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
         </aside>
       </div>
