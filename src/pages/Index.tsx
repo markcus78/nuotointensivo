@@ -81,7 +81,7 @@ const Index = () => {
             <img
               src="/logo-wt.png"
               alt="Wellness Town"
-              className="h-9 w-auto mb-4 brightness-0 invert"
+              className="h-9 w-auto mb-4 brightness-0 invert opacity-90"
             />
             <p className="leading-relaxed">
               by Appiae Sport ssd arl
