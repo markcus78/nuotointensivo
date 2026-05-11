@@ -16,12 +16,12 @@ const faqs = [
     a: "No. Il nuoto intensivo estivo è aperto a tutti, anche a chi non ha mai messo piede da noi. È un'occasione per provarci senza impegnarsi sull'anno.",
   },
   {
-    q: "Come si paga? Devo pagare ora?",
-    a: "No, il modulo è solo una prenotazione: nessuna carta richiesta. Quando ti chiamiamo entro 24h confermiamo formato, orario e modalità di pagamento — direttamente in struttura o tramite i nostri sistemi.",
+    q: "Come si paga?",
+    a: "Il pagamento avviene online al momento dell'iscrizione, direttamente dal modulo. Dopo, un istruttore ti contatta entro 24h per confermare il livello di nuoto e l'orario migliore per te.",
   },
   {
     q: "Cosa serve portare il primo giorno?",
-    a: "Costume, cuffia, occhialini. Per i bambini: certificato medico di idoneità sportiva non agonistica, se non è già stato fornito durante la stagione invernale.",
+    a: "Costume, cuffia, occhialini. Il certificato medico di idoneità sportiva non agonistica è richiesto per tutti i partecipanti (bambini dai 6 anni), se non è già stato fornito durante la stagione invernale.",
   },
   {
     q: "Cosa succede se salto un allenamento?",

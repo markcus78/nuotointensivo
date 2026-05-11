@@ -26,9 +26,9 @@ const formats = [
 ];
 
 const orari = [
-  { ora: "17:10", target: "Bambini",          age: "fino 12 anni" },
-  { ora: "18:10", target: "Bambini & Ragazzi", age: "13—17 anni" },
-  { ora: "19:10", target: "Adulti",            age: "18+ anni" },
+  { ora: "17:10", target: "Bambini",           age: "fino 12 anni", superAvail: true },
+  { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 17 anni", superAvail: false },
+  { ora: "19:10", target: "Adulti",            age: "18+ anni",     superAvail: true },
 ];
 
 const scrollToForm = () =>
@@ -164,7 +164,7 @@ const Value = () => (
           </div>
           <div className="col-span-12 md:col-span-5">
             <p className="text-ink2 leading-relaxed">
-              Ogni fascia ha il suo orario, il suo istruttore, il suo spazio in spogliatoio. Lunedì, mercoledì, venerdì per tutti. Più martedì e giovedì per il Super Intensivo.
+              Ogni fascia ha il suo orario, il suo istruttore, il suo spazio in spogliatoio. Lunedì, mercoledì, venerdì per tutti i turni. Martedì e giovedì solo per il Super Intensivo ai turni delle 17:10 e 19:10.
             </p>
           </div>
         </div>
@@ -183,9 +183,11 @@ const Value = () => (
               <p className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                 Lun &middot; Mer &middot; Ven
               </p>
-              <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70 mt-1">
-                + Mar &middot; Gio (Super)
-              </p>
+              {o.superAvail && (
+                <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70 mt-1">
+                  + Mar &middot; Gio (Super)
+                </p>
+              )}
             </div>
           ))}
         </div>
