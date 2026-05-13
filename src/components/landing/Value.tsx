@@ -26,9 +26,9 @@ const formats = [
 ];
 
 const orari = [
-  { ora: "17:10", target: "Bambini",           age: "fino 12 anni", superAvail: true },
-  { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 17 anni", superAvail: false },
-  { ora: "19:10", target: "Adulti",            age: "18+ anni",     superAvail: true },
+  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true },
+  { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 14 anni", superAvail: false },
+  { ora: "19:10", target: "Adulti",            age: "dai 15 anni",  superAvail: true },
 ];
 
 const scrollToForm = () =>

@@ -12,12 +12,12 @@ const rows = [
   {
     n: "03",
     title: "Fasce d'età separate.",
-    body: "Bambini fino ai 12. Ragazzi 13-17. Adulti 18+. Tre turni dedicati, ogni gruppo ha il suo spazio e il suo istruttore.",
+    body: "Bambini fino ai 10. Bambini & ragazzi fino ai 14. Adulti dai 15. Tre turni dedicati, ogni gruppo ha il suo spazio e il suo istruttore.",
   },
   {
     n: "04",
-    title: "Nessuna iscrizione invernale richiesta.",
-    body: "Anche se non hai mai messo piede a Wellness Town, puoi iscriverti solo all'estivo. Pacchetti settimanali o full 4 settimane.",
+    title: "Nessun brevetto richiesto.",
+    body: "Il corso è aperto a tutti dai 3 anni. Soprattutto a chi durante la stagione invernale fa altro. Nessuna iscrizione precedente a Wellness Town richiesta.",
   },
 ];
 
