@@ -46,7 +46,7 @@ const Index = () => {
       <header className="sticky top-0 z-40 backdrop-blur bg-background/85 border-b border-border">
         <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
           <a href="#" className="flex items-center gap-3">
-            <img src="/logo-wt.png" alt="Wellness Town" className="h-12 w-auto" />
+            <img src="/logo-wt.png" alt="Wellness Town" className="h-16 w-auto" />
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-semibold text-foreground/70">
             {navLinks.map((l) => (
@@ -81,7 +81,7 @@ const Index = () => {
             <img
               src="/logo-wt.png"
               alt="Wellness Town"
-              className="h-12 w-auto mb-4 brightness-0 invert opacity-90"
+              className="h-16 w-auto mb-4 brightness-0 invert opacity-90"
             />
             <p className="leading-relaxed">
               by Appiae Sport ssd arl
