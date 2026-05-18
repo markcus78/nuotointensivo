@@ -37,7 +37,7 @@ const StickyBar = () => {
           <p className="text-sm sm:text-base font-semibold flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-warn live-dot shrink-0" />
             Promo prezzi 2025 &mdash;{" "}
-            <span className="text-charcoal-foreground/90">fino al 17 maggio</span>
+            <span className="text-charcoal-foreground/90">fino al 23 maggio</span>
           </p>
         </div>
         <Button

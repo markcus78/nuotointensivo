@@ -11,7 +11,7 @@ const FormSection = () => (
         <div className="inline-flex items-center gap-2 bg-warn/15 text-warn border border-warn/30 rounded-full px-3 py-1.5 mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-warn live-dot" />
           <span className="text-xs font-bold uppercase tracking-[0.18em]">
-            Promo prezzi 2025 fino al 17 maggio
+            Promo prezzi 2025 fino al 23 maggio
           </span>
         </div>
         <p className="sec-num mb-3 text-charcoal-foreground/60">07 / Prenota</p>
@@ -33,7 +33,7 @@ const FormSection = () => (
       <div className="mt-8 grid grid-cols-3 gap-4 text-center text-charcoal-foreground/70 text-[12px] font-mono uppercase tracking-widest">
         <div>&#10003; Nessun pagamento ora</div>
         <div>&#10003; Ti chiamiamo entro 24h</div>
-        <div>&#10003; Prezzi 2025 entro il 17 maggio</div>
+        <div>&#10003; Prezzi 2025 entro il 23 maggio</div>
       </div>
     </div>
   </section>

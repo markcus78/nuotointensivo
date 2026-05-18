@@ -90,7 +90,7 @@ const Hero = ({ hideCTA = false }: HeroProps) => (
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2 font-mono uppercase tracking-widest text-[11px] text-warn">
                 <span className="w-1.5 h-1.5 rounded-full bg-warn live-dot" />
-                <span>Promo &middot; fino al 17 maggio</span>
+                <span>Promo &middot; fino al 23 maggio</span>
               </div>
               <div className="font-mono uppercase tracking-widest text-[11px] opacity-70">
                 Edizione &middot; Estate 2026
@@ -117,7 +117,7 @@ const Hero = ({ hideCTA = false }: HeroProps) => (
               </div>
             </div>
             <p className="mt-3 text-[12px] text-charcoal-foreground/60">
-              Iscrivendoti entro il 17 maggio paghi i prezzi 2025. Dal 18 maggio listino 2026.
+              Iscrivendoti entro il 23 maggio paghi i prezzi 2025. Dal 24 maggio listino 2026.
             </p>
           </div>
         </div>

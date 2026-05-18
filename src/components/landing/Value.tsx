@@ -47,7 +47,7 @@ const Value = () => (
         </div>
         <div className="col-span-12 md:col-span-5 flex md:items-end">
           <p className="text-ink2 text-lg leading-relaxed">
-            Iscrivendoti entro il <strong className="text-foreground">17 maggio</strong> paghi i prezzi 2025. Dopo il 18 maggio listino aggiornato.
+            Iscrivendoti entro il <strong className="text-foreground">23 maggio</strong> paghi i prezzi 2025. Dopo il 24 maggio listino aggiornato.
           </p>
         </div>
       </div>
