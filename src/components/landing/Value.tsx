@@ -26,7 +26,7 @@ const formats = [
 ];
 
 const orari = [
-  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true,  soldOutNote: "Ambientamento 0 e 1 completi \u2014 disponibili gli altri livelli" },
+  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true,  soldOutNote: "Livello ambientamento completo \u2014 disponibili gli altri livelli" },
   { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 14 anni", superAvail: false, soldOutNote: null },
   { ora: "19:10", target: "Adulti",            age: "dai 15 anni",  superAvail: true,  soldOutNote: null },
 ];
