@@ -26,7 +26,7 @@ const formats = [
 ];
 
 const orari = [
-  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true,  soldOutNote: "Livello ambientamento completo \u2014 disponibili gli altri livelli" },
+  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true,  soldOutNote: "Livello ambientamento: posti in esaurimento \u2014 altri livelli disponibili" },
   { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 14 anni", superAvail: false, soldOutNote: null },
   { ora: "19:10", target: "Adulti",            age: "dai 15 anni",  superAvail: true,  soldOutNote: null },
 ];
@@ -176,7 +176,7 @@ const Value = () => (
             >
               {o.soldOutNote && (
                 <span className="absolute top-4 right-4 bg-warn/15 text-warn border border-warn/30 font-mono text-[10px] uppercase tracking-widest px-2 py-1 rounded-full">
-                  Esaurito
+                  In esaurimento
                 </span>
               )}
               <p className="font-display text-6xl text-primary leading-none mb-2">{o.ora}</p>
