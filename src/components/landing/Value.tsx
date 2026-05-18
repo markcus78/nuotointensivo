@@ -26,9 +26,9 @@ const formats = [
 ];
 
 const orari = [
-  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true },
-  { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 14 anni", superAvail: false },
-  { ora: "19:10", target: "Adulti",            age: "dai 15 anni",  superAvail: true },
+  { ora: "17:10", target: "Bambini",           age: "fino 10 anni", superAvail: true,  soldOutNote: "Ambientamento 0 e 1 completi \u2014 disponibili gli altri livelli" },
+  { ora: "18:10", target: "Bambini & Ragazzi", age: "fino 14 anni", superAvail: false, soldOutNote: null },
+  { ora: "19:10", target: "Adulti",            age: "dai 15 anni",  superAvail: true,  soldOutNote: null },
 ];
 
 const scrollToForm = () =>
@@ -172,8 +172,13 @@ const Value = () => (
           {orari.map((o) => (
             <div
               key={o.ora}
-              className="border border-border rounded-xl p-6 hover:border-primary/40 transition-colors"
+              className="relative border border-border rounded-xl p-6 hover:border-primary/40 transition-colors"
             >
+              {o.soldOutNote && (
+                <span className="absolute top-4 right-4 bg-warn/15 text-warn border border-warn/30 font-mono text-[10px] uppercase tracking-widest px-2 py-1 rounded-full">
+                  Esaurito
+                </span>
+              )}
               <p className="font-display text-6xl text-primary leading-none mb-2">{o.ora}</p>
               <p className="font-bold text-lg text-foreground">{o.target}</p>
               <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground mt-1">
@@ -186,6 +191,11 @@ const Value = () => (
               {o.superAvail && (
                 <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground/70 mt-1">
                   + Mar &middot; Gio (Super)
+                </p>
+              )}
+              {o.soldOutNote && (
+                <p className="mt-3 text-[11px] text-warn leading-snug">
+                  {o.soldOutNote}
                 </p>
               )}
             </div>
