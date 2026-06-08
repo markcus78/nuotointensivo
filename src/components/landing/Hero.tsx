@@ -85,12 +85,12 @@ const Hero = ({ hideCTA = false }: HeroProps) => (
             </div>
           </div>
 
-          {/* Promo card */}
+          {/* Prezzi card */}
           <div className="bg-charcoal text-charcoal-foreground rounded-xl p-4 sm:p-5 max-w-2xl">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2 font-mono uppercase tracking-widest text-[11px] text-warn">
                 <span className="w-1.5 h-1.5 rounded-full bg-warn live-dot" />
-                <span>Promo &middot; fino al 23 maggio</span>
+                <span>Posti limitati</span>
               </div>
               <div className="font-mono uppercase tracking-widest text-[11px] opacity-70">
                 Edizione &middot; Estate 2026
@@ -102,8 +102,7 @@ const Hero = ({ hideCTA = false }: HeroProps) => (
                   Intensivo &middot; 4 sett.
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl sm:text-5xl leading-none text-primary">€129</span>
-                  <span className="font-mono text-sm text-charcoal-foreground/40 line-through">€139</span>
+                  <span className="font-display text-4xl sm:text-5xl leading-none text-primary">€139</span>
                 </div>
               </div>
               <div>
@@ -111,13 +110,12 @@ const Hero = ({ hideCTA = false }: HeroProps) => (
                   Super &middot; 4 sett.
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl sm:text-5xl leading-none text-primary">€149</span>
-                  <span className="font-mono text-sm text-charcoal-foreground/40 line-through">€159</span>
+                  <span className="font-display text-4xl sm:text-5xl leading-none text-primary">€159</span>
                 </div>
               </div>
             </div>
             <p className="mt-3 text-[12px] text-charcoal-foreground/60">
-              Iscrivendoti entro il 23 maggio paghi i prezzi 2025. Dal 24 maggio listino 2026.
+              Posti limitati per turno. Prenoti ora senza pagare: ti chiamiamo entro 24 ore per confermare formato e orario.
             </p>
           </div>
         </div>

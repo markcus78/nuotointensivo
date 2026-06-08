@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "Si può iniziare a metà corso o fare solo qualche settimana?",
-    a: "Sì. I pacchetti sono settimanali (€35 intensivo, €55 super) o full 4 settimane (€129 intensivo, €149 super, prezzi promo entro il 23 maggio). Puoi entrare anche a giugno avanzato.",
+    a: "Sì. I pacchetti sono settimanali (€40 intensivo, €60 super) o full 4 settimane (€139 intensivo, €159 super). Puoi entrare anche a giugno avanzato.",
   },
   {
     q: "Devo essere già iscritto a Wellness Town tutto l'anno?",

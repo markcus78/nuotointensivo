@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Nuoto Intensivo Estate 2026 — Wellness Town</title>
+    <script type="text/javascript">
+      // SPA fallback per GitHub Pages: converte il path richiesto (es. /grazie)
+      // in una query e ricarica index.html, che lo ricostruisce lato client.
+      // Dominio custom servito dalla root → pathSegmentsToKeep = 0.
+      (function (l) {
+        var pathSegmentsToKeep = 0;
+        l.replace(
+          l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+          l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+          l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+          (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+          l.hash
+        );
+      }(window.location))
+    </script>
+  </head>
+  <body></body>
+</html>

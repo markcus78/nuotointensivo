@@ -32,7 +32,7 @@ const Grazie = () => {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 h-10 flex items-center justify-between gap-4 text-[12px] sm:text-[13px]">
           <div className="flex items-center gap-2 font-mono uppercase tracking-widest">
             <span className="w-1.5 h-1.5 rounded-full bg-warn live-dot" />
-            <span className="opacity-90">Promo prezzi 2025 fino al 23 maggio</span>
+            <span className="opacity-90">Posti limitati &middot; prima edizione estiva</span>
           </div>
           <div className="hidden sm:flex items-center gap-5 font-mono uppercase tracking-widest opacity-80">
             <span>Roma Sud</span>

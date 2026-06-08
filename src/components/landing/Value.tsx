@@ -4,10 +4,8 @@ const formats = [
     name: "INTENSIVO",
     days: "3 allenamenti / settimana",
     schedule: ["Lunedì", "Mercoledì", "Venerdì"],
-    weekPriceNow: "€35",
-    weekPriceFull: "€40",
-    fullPriceNow: "€129",
-    fullPriceFull: "€139",
+    weekPrice: "€40",
+    fullPrice: "€139",
     desc: "Per chi vuole migliorare in modo costante senza stravolgere l'estate.",
     highlight: false,
   },
@@ -16,10 +14,8 @@ const formats = [
     name: "SUPER INTENSIVO",
     days: "5 allenamenti / settimana",
     schedule: ["Lun", "Mar", "Mer", "Gio", "Ven"],
-    weekPriceNow: "€55",
-    weekPriceFull: "€60",
-    fullPriceNow: "€149",
-    fullPriceFull: "€159",
+    weekPrice: "€60",
+    fullPrice: "€159",
     desc: "Cinque sessioni a settimana per un salto di livello che si vede già a settembre.",
     highlight: true,
   },
@@ -47,7 +43,7 @@ const Value = () => (
         </div>
         <div className="col-span-12 md:col-span-5 flex md:items-end">
           <p className="text-ink2 text-lg leading-relaxed">
-            Iscrivendoti entro il <strong className="text-foreground">23 maggio</strong> paghi i prezzi 2025. Dopo il 24 maggio listino aggiornato.
+            <strong className="text-foreground">Posti limitati</strong> per turno: ogni fascia ha un numero chiuso di posti. Prenoti ora, paghi quando confermiamo formato e orario.
           </p>
         </div>
       </div>
@@ -110,10 +106,7 @@ const Value = () => (
                   1 settimana
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl sm:text-5xl text-primary leading-none">{f.weekPriceNow}</span>
-                  <span className={`font-mono text-sm line-through ${f.highlight ? "text-charcoal-foreground/40" : "text-muted-foreground"}`}>
-                    {f.weekPriceFull}
-                  </span>
+                  <span className="font-display text-4xl sm:text-5xl text-primary leading-none">{f.weekPrice}</span>
                 </div>
               </div>
               <div>
@@ -123,10 +116,7 @@ const Value = () => (
                   4 settimane
                 </p>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-display text-4xl sm:text-5xl text-primary leading-none">{f.fullPriceNow}</span>
-                  <span className={`font-mono text-sm line-through ${f.highlight ? "text-charcoal-foreground/40" : "text-muted-foreground"}`}>
-                    {f.fullPriceFull}
-                  </span>
+                  <span className="font-display text-4xl sm:text-5xl text-primary leading-none">{f.fullPrice}</span>
                 </div>
               </div>
             </div>

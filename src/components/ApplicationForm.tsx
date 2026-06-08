@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
-// TODO Marco: sostituire con webhook reale Zapier per nuoto intensivo
-const WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/XXXXX/YYYYY/";
+// URL del Web App Apps Script collegato allo Google Sheet
+// "Nuoto Intensivo Estivo 2026 — Richieste". I lead vengono appesi come righe.
+const WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbxjS7WAPYxm2bxaQUjT5ws3YfuO5VgHynno5WFcToTr16365yFXvNUF5CsPfcT415dX/exec";
 
 const categorieOptions = [
   { value: "bambino" as const, label: "Bambino", sub: "fino 12" },
@@ -17,8 +19,8 @@ const categorieOptions = [
 ];
 
 const formatoOptions = [
-  { value: "intensivo"      as const, label: "Intensivo",       sub: "3× sett. — da €35" },
-  { value: "superintensivo" as const, label: "Super Intensivo", sub: "5× sett. — da €55" },
+  { value: "intensivo"      as const, label: "Intensivo",       sub: "3× sett. — da €40" },
+  { value: "superintensivo" as const, label: "Super Intensivo", sub: "5× sett. — da €60" },
   { value: "non_so"         as const, label: "Non lo so ancora", sub: "decidiamo insieme" },
 ];
 
@@ -105,6 +107,12 @@ const ApplicationForm = () => {
           submitted_at: new Date().toISOString(),
         }),
       });
+      // Evento di conversione Meta Pixel
+      (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq?.(
+        "track",
+        "Lead",
+        { content_name: "nuoto-intensivo-estivo-2026" }
+      );
       window.location.assign("/grazie");
     } catch {
       toast.error("Qualcosa è andato storto. Riprova o chiamaci direttamente.");
