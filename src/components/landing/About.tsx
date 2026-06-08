@@ -14,7 +14,7 @@ const About = () => (
           <h2 className="font-display text-5xl sm:text-7xl leading-[0.95] mb-6">
             Quattro istruttori.
             <br />
-            Stessi tutta l&apos;estate.
+            Gli stessi tutta l&apos;estate!
           </h2>
           <p className="text-lg sm:text-2xl leading-relaxed text-primary-foreground/90 max-w-2xl">
             Sono il team che allena tutto l&apos;anno a Wellness Town. Stesso livello, stessa cura, stesso metodo.
