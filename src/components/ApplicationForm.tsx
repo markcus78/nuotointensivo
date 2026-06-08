@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 // URL del Web App Apps Script collegato allo Google Sheet
 // "Nuoto Intensivo Estivo 2026 — Richieste". I lead vengono appesi come righe.
 const WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbxjS7WAPYxm2bxaQUjT5ws3YfuO5VgHynno5WFcToTr16365yFXvNUF5CsPfcT415dX/exec";
+  "https://script.google.com/macros/s/AKfycbwwUFIeSeB-Y2Yo7QCvHvaKX4F9zlzq-pUcuKj4YR_IfG45C0wBUvWHYaICr94P211p/exec";
 
 const categorieOptions = [
   { value: "bambino" as const, label: "Bambino", sub: "fino 12" },

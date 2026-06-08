@@ -7,24 +7,24 @@
  * ──────────────────────────────────────────────────────────────────────────
  * INSTALLAZIONE / AGGIORNAMENTO (Marco):
  *
- * A) Incolla questo codice
+ * A) Incolla questo codice NEL PROGETTO GIUSTO
  *    1. Apri lo Sheet "Nuoto Intensivo Estivo 2026 — Richieste".
- *    2. Estensioni → Apps Script. Cancella tutto, incolla questo file, Salva.
+ *    2. Estensioni → Apps Script (così sei nel progetto agganciato al foglio,
+ *       lo stesso che pubblica l'URL del form). Cancella tutto, incolla questo
+ *       file, Salva.
  *
- * B) Inserisci i segreti Keap (NON vanno nel codice — restano privati)
- *    3. In Apps Script: ⚙ Impostazioni progetto → "Proprietà script" →
- *       Aggiungi proprietà, due volte:
- *         • KEAP_API_KEY  =  la tua Service Account Key di Keap
- *         • KEAP_TAG_ID   =  l'ID numerico del tag che apre l'opportunità
- *
- *    Dove prendere la Service Account Key: https://keys.developer.keap.com
- *    (serve un account admin Keap → crea una "Service Account Key").
- *    Dove prendere l'ID del tag: in Keap il tag ha un ID numerico
- *    (visibile nell'URL quando apri il tag, o chiedi a Claude di elencarli).
- *
- * C) Pubblica la nuova versione
- *    4. Deploy → Gestisci distribuzioni → matita ✏ → Versione: "Nuova versione"
+ * B) Pubblica la nuova versione
+ *    3. Deploy → Gestisci distribuzioni → matita ✏ → Versione: "Nuova versione"
  *       → Distribuisci.  (L'URL /exec NON cambia.)
+ *
+ * C) Compila i valori Keap nella scheda "Config" del foglio
+ *    4. Torna al foglio: ora c'è una scheda "Config" (creata in automatico).
+ *       Compila la colonna B:
+ *         B1 = la tua Service Account Key di Keap
+ *         B2 = l'ID numerico del tag che apre l'opportunità
+ *    (Se la scheda non c'è ancora, esegui una volta la funzione "testKeap":
+ *     la crea. La Service Account Key si genera dentro Keap → Impostazioni →
+ *     API Settings → Service Account Key. NON condividere il foglio con nessuno.)
  *
  * D) (Facoltativo) Test
  *    5. In alto seleziona la funzione "testKeap" → Esegui. Guarda i log:
@@ -34,8 +34,58 @@
 
 var KEAP_BASE = 'https://api.infusionsoft.com/crm/rest/v1';
 
+/**
+ * Legge un valore di configurazione dalla scheda "Config" del foglio stesso.
+ * Se la scheda non esiste, la crea con le etichette pronte (basta compilare la
+ * colonna B). Usare il foglio — e non le Proprietà script — evita ogni
+ * disallineamento tra progetti Apps Script diversi.
+ *   A1: KEAP_API_KEY   B1: <Service Account Key>
+ *   A2: KEAP_TAG_ID    B2: <id numerico del tag>
+ */
 function prop(key) {
-  return PropertiesService.getScriptProperties().getProperty(key);
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var cfg = ss.getSheetByName('Config');
+  if (!cfg) {
+    cfg = ss.insertSheet('Config');
+    cfg.getRange('A1').setValue('KEAP_API_KEY');
+    cfg.getRange('A2').setValue('KEAP_TAG_ID');
+    cfg.getRange('D1').setValue('Incolla i valori nella colonna B (B1 = chiave Keap, B2 = id tag). NON condividere questo foglio.');
+    cfg.getRange('A1:A2').setFontWeight('bold');
+    return '';
+  }
+  var rows = cfg.getRange('A1:B20').getValues();
+  for (var i = 0; i < rows.length; i++) {
+    if (String(rows[i][0]).trim() === key) return String(rows[i][1]).trim();
+  }
+  return '';
+}
+
+/**
+ * Chiamata all'API Keap. Prova prima l'header "Authorization: Bearer" (doc
+ * ufficiale per Service Account Key / Personal Access Token); se l'auth fallisce
+ * (401/403) ritenta con "X-Keap-API-Key". Ritorna l'oggetto HTTPResponse.
+ */
+function keapFetch(path, method, payloadObj) {
+  var apiKey = prop('KEAP_API_KEY');
+  var base = {
+    method: method,
+    contentType: 'application/json',
+    muteHttpExceptions: true
+  };
+  if (payloadObj) base.payload = JSON.stringify(payloadObj);
+
+  var opt1 = JSON.parse(JSON.stringify(base));
+  if (payloadObj) opt1.payload = base.payload;
+  opt1.headers = { 'Authorization': 'Bearer ' + apiKey };
+  var res = UrlFetchApp.fetch(KEAP_BASE + path, opt1);
+
+  if (res.getResponseCode() === 401 || res.getResponseCode() === 403) {
+    var opt2 = JSON.parse(JSON.stringify(base));
+    if (payloadObj) opt2.payload = base.payload;
+    opt2.headers = { 'X-Keap-API-Key': apiKey };
+    res = UrlFetchApp.fetch(KEAP_BASE + path, opt2);
+  }
+  return res;
 }
 
 /** Crea/aggiorna il contatto in Keap e applica il tag. Ritorna {ok, contactId, message}. */
@@ -43,7 +93,7 @@ function syncToKeap(data) {
   var apiKey = prop('KEAP_API_KEY');
   var tagId = prop('KEAP_TAG_ID');
   if (!apiKey || !tagId) {
-    return { ok: false, message: 'KEAP_API_KEY o KEAP_TAG_ID non impostati nelle Proprietà script' };
+    return { ok: false, message: 'KEAP_API_KEY (B1) o KEAP_TAG_ID (B2) non compilati nella scheda Config del foglio' };
   }
 
   // 1) Crea o aggiorna il contatto (deduplica per email)
@@ -53,19 +103,13 @@ function syncToKeap(data) {
     family_name: data.cognome || ''
   };
   if (data.email) {
-    contactBody.email_addresses = [{ field: 'EMAIL', email: String(data.email) }];
+    contactBody.email_addresses = [{ field: 'EMAIL1', email: String(data.email) }];
   }
   if (data.telefono) {
     contactBody.phone_numbers = [{ field: 'PHONE1', number: String(data.telefono) }];
   }
 
-  var cRes = UrlFetchApp.fetch(KEAP_BASE + '/contacts', {
-    method: 'put',
-    contentType: 'application/json',
-    headers: { 'X-Keap-API-Key': apiKey },
-    payload: JSON.stringify(contactBody),
-    muteHttpExceptions: true
-  });
+  var cRes = keapFetch('/contacts', 'put', contactBody);
   var cCode = cRes.getResponseCode();
   if (cCode < 200 || cCode >= 300) {
     return { ok: false, message: 'Contatto HTTP ' + cCode + ': ' + cRes.getContentText().slice(0, 300) };
@@ -73,13 +117,7 @@ function syncToKeap(data) {
   var contactId = JSON.parse(cRes.getContentText()).id;
 
   // 2) Applica il tag (fa scattare l'automazione/opportunità in Keap)
-  var tRes = UrlFetchApp.fetch(KEAP_BASE + '/contacts/' + contactId + '/tags', {
-    method: 'post',
-    contentType: 'application/json',
-    headers: { 'X-Keap-API-Key': apiKey },
-    payload: JSON.stringify({ tagIds: [Number(tagId)] }),
-    muteHttpExceptions: true
-  });
+  var tRes = keapFetch('/contacts/' + contactId + '/tags', 'post', { tagIds: [Number(tagId)] });
   var tCode = tRes.getResponseCode();
   if (tCode < 200 || tCode >= 300) {
     return { ok: false, contactId: contactId, message: 'Tag HTTP ' + tCode + ': ' + tRes.getContentText().slice(0, 300) };
@@ -159,12 +197,12 @@ function testKeap() {
 
 /** Esegui a mano per elencare i tag Keap (id + nome), se non conosci l'ID del tag. */
 function listKeapTags() {
-  var apiKey = prop('KEAP_API_KEY');
-  if (!apiKey) { Logger.log('KEAP_API_KEY non impostata'); return; }
-  var res = UrlFetchApp.fetch(KEAP_BASE + '/tags?limit=1000', {
-    headers: { 'X-Keap-API-Key': apiKey },
-    muteHttpExceptions: true
-  });
+  if (!prop('KEAP_API_KEY')) { Logger.log('KEAP_API_KEY non impostata'); return; }
+  var res = keapFetch('/tags?limit=1000', 'get', null);
+  if (res.getResponseCode() < 200 || res.getResponseCode() >= 300) {
+    Logger.log('Errore HTTP ' + res.getResponseCode() + ': ' + res.getContentText().slice(0, 300));
+    return;
+  }
   var tags = (JSON.parse(res.getContentText()).tags) || [];
   tags.forEach(function (t) { Logger.log(t.id + '  —  ' + t.name); });
 }
